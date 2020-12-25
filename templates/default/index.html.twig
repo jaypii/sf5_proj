@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+<div class="jumbotron">
+    <h1 class="display-3">Welcome</h1>
+    <p class="lead">Symfony {{ constant('Symfony\\Component\\HttpKernel\\Kernel::VERSION') }} &amp; Bootstrap 4.5.3</p>
+    </div>
+    <div class="card mb-2">
+        <div class="card-body">
+           top row
+        </div>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div class="card">
+                <div class="card-body">
+                {% for i in 1..8 %}
+                    <div class="{{ cycle(['even', 'odd'], i) }}">
+                        <p>Test {{i}}</p>
+                    </div>
+                {% endfor %}
+            </div>   
+        </div>
+    </div>
+    <div class="col">
+            <div class="card">
+                <div class="card-body">
+                    &nbsp;
+                </div>
+            </div>
+        </div>
+    <div class="col">&nbsp;</div>
+</div>
+{% endblock %}
