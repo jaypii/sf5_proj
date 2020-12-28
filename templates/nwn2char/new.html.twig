@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New NWN2Char{% endblock %}
+
+{% block body %}
+    <h1>Create new NWN2Char</h1>
+
+    {{ include('nwn2char/_form.html.twig') }}
+
+    <a href="{{ path('nwn2char_index') }}">back to list</a>
+{% endblock %}

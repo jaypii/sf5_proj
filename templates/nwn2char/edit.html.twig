@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit NWN2Char{% endblock %}
+
+{% block body %}
+    <h1>Edit NWN2Char</h1>
+
+    {{ include('nwn2char/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('nwn2char_index') }}">back to list</a>
+
+    {{ include('nwn2char/_delete_form.html.twig') }}
+{% endblock %}
