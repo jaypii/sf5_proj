@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Product index</h1>
-
+    <a href="{{ path('product_new') }}" class="btn btn-success btn-sm float-right mb-2">Create new</a>
     <table class="table">
         <thead>
             <tr>
@@ -12,7 +12,7 @@
                 <th>Name</th>
                 <th>Price</th>
                 <th>Description</th>
-                <th>actions</th>
+                <th>&nbsp;</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +23,8 @@
                 <td>{{ product.price }}</td>
                 <td>{{ product.description }}</td>
                 <td>
-                    <a href="{{ path('product_show', {'id': product.id}) }}">show</a>
-                    <a href="{{ path('product_edit', {'id': product.id}) }}">edit</a>
+                    <a href="{{ path('product_show', {'id': product.id}) }}" class="btn btn-primary btn-sm">Show</a>
+                    <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-success btn-sm">Edit</a>
                 </td>
             </tr>
         {% else %}
@@ -34,6 +34,4 @@
         {% endfor %}
         </tbody>
     </table>
-
-    <a href="{{ path('product_new') }}">Create new</a>
 {% endblock %}
