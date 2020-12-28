@@ -1,0 +1,14 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello BlogController!{% endblock %}
+
+{% block body %}
+<h1>Hello {{ controller_name }}! ✅</h1>
+<div class="card p-2 mt-2">
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code><a href="{{ '/Volumes/Projects430/Development/web/symf5/src/Controller/BlogController.php'|file_link(0) }}">src/Controller/BlogController.php</a></code></li>
+        <li>Your template at <code><a href="{{ '/Volumes/Projects430/Development/web/symf5/templates/blog/index.html.twig'|file_link(0) }}">templates/blog/index.html.twig</a></code></li>
+    </ul>
+</div>
+{% endblock %}
