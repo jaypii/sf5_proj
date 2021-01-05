@@ -4,9 +4,6 @@
 
 {% block body %}
     <h1>NWN2 Chars List</h1>
-    <div class="count">
-        {{ pagination.getTotalItemCount }}
-    </div>
     <table class="table table-striped" style="font-size: 0.8rem">
         <thead>
             <tr>
@@ -16,7 +13,9 @@
                 <th>Race</th>
                 <th>Alignment</th>
                 <th>Classes</th>
-                <th>Lvltotal</th>
+                <th {% if nwn2chars.isSorted('ch.lvltotal') %} class="sorted"{% endif %}>
+                    {{ knp_pagination_sortable(nwn2chars, 'LvlTotal', ['ch.lvltotal','ch.name']) }}
+                </th>
                 <th>Layer</th>
                 <th>&nbsp;</th>
             </tr>
@@ -47,9 +46,7 @@
         {% endfor %}
         </tbody>
     </table>
-    <div class="card mt-2 p-2">
-        pagination {# knp_pagination_render(nwn2chars) #}
+    <div>
+        {{ knp_pagination_render(nwn2chars) }}
     </div>
-
-    <a href="{{ path('nwn2char_new') }}">Create new</a>
 {% endblock %}

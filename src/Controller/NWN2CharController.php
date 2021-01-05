@@ -17,13 +17,34 @@ use Knp\Component\Pager\PaginatorInterface;
 class NWN2CharController extends AbstractController
 {
     #[Route('/', name: 'nwn2char_index', methods: ['GET'])]
-    public function index(NWN2CharRepository $nWN2CharRepository): Response
+    // Include the paginator through dependency injection, the autowire needs to be enabled in the project
+    public function index(Request $request, PaginatorInterface $paginator)
     {
-        return $this->render('nwn2char/index.html.twig', [
-            'nwn2chars' => $nWN2CharRepository->findAll(),
+        // Retrieve the entity manager of Doctrine
+        $em = $this->getDoctrine()->getManager();
+        
+        // Get some repository of data, in our case we have an Appointments entity
+        $nWN2CharRepository = $em->getRepository(NWN2Char::class);
+                
+        // Find all the data on the nwn2_chars table, filter your query as you need
+        $allNWN2CharsQuery = $nWN2CharRepository->createQueryBuilder('ch')
+            ->getQuery();
+        
+        // Paginate the results of the query
+        $nwn2chars = $paginator->paginate(
+            // Doctrine Query, not results
+            $allNWN2CharsQuery,
+            // Define the page parameter
+            $request->query->getInt('page', 1),
+            // Items per page
+            14
+        );
+        
+        // Render the twig view
+        return $this->render('nwn2char/list.html.twig', [
+            'nwn2chars' => $nwn2chars
         ]);
     }
-
     #[Route('/new', name: 'nwn2char_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
