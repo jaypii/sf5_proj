@@ -37,7 +37,7 @@ class NWN2CharController extends AbstractController
             // Define the page parameter
             $request->query->getInt('page', 1),
             // Items per page
-            14
+            16
         );
         
         // Render the twig view
@@ -45,6 +45,7 @@ class NWN2CharController extends AbstractController
             'nwn2chars' => $nwn2chars
         ]);
     }
+    
     #[Route('/new', name: 'nwn2char_new', methods: ['GET', 'POST'])]
     public function new(Request $request): Response
     {
