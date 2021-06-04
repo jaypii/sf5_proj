@@ -4,7 +4,7 @@
 
 {% block body %}
     <h1>Product</h1>
-
+    <div class="card p-2 mb-2 bg-light">
     <table class="table">
         <tbody>
             <tr>
@@ -25,6 +25,7 @@
             </tr>
         </tbody>
     </table>
+    </div>
 
     <a href="{{ path('product_index') }}" class="btn btn-primary btn-sm">&lt;&lt;</a>
     <a href="{{ path('product_edit', {'id': product.id}) }}" class="btn btn-success btn-sm">Edit</a>
